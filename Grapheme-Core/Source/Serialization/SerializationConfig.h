@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Grapheme {
-	struct SSerializationConfig {
+	struct GRAPHEME_API SSerializationConfig {
 		int m_indent_width = 4;
 
 		// Flags

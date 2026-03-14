@@ -14,7 +14,7 @@ namespace Grapheme {
 	struct STranscriptResult;
 
 
-	class CTranscriptSerializer {
+	class GRAPHEME_API CTranscriptSerializer {
 	private:
 		SSerializationConfig m_config;
 
