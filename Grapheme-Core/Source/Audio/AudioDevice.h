@@ -1,7 +1,7 @@
 #pragma once
 #include "AudioConfig.h"
 #include "AudioRingBuffer.h"
-
+#include "../Core/ResultCodes.h"
 #include <memory>
 #include <atomic>
 

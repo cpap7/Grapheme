@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdint>
 
+#include "../Core/ResultCodes.h"
 namespace Grapheme {
 
 	struct SLanguageResult {
