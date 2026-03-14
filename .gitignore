@@ -20,3 +20,7 @@
 /Grapheme-Core/Grapheme-Core.vcxproj.filters
 /Grapheme-Core/Grapheme-Core.vcxproj.user
 /Grapheme.sln
+/Grapheme-Core/Vendor/whisper.cpp
+/Grapheme-Core/bin-int/Debug-x86_64
+/Grapheme-Core/bin/Debug-x86_64
+/Grapheme-App/bin-int/Debug-x86_64
