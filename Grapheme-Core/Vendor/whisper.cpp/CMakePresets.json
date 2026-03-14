@@ -1,0 +1,58 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "p-x64-win-debug-static",
+      "displayName": "Phoneme: x64 Debug Static (native)",
+      "description": "Phoneme: Windows(64-bit) Static Lib Debug build",
+      "generator": "Visual Studio 18 2026",
+      "binaryDir": "${sourceDir}/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDebugDLL",
+        "GGML_VULKAN": "OFF",
+        "BUILD_SHARED_LIBS": "OFF",
+        "WHISPER_BUILD_TESTS": "OFF",
+        "WHISPER_BUILD_EXAMPLES": "OFF"
+      }
+    },
+    {
+      "name": "p-x64-win-release-static",
+      "displayName": "Phoneme: x64 Release Static (native)",
+      "description": "Phoneme: Windows(64-bit) Static Lib Release build",
+      "generator": "Visual Studio 18 2026",
+      "binaryDir": "${sourceDir}/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreadedDLL",
+        "GGML_VULKAN": "OFF",
+        "BUILD_SHARED_LIBS": "OFF",
+        "WHISPER_BUILD_TESTS": "OFF",
+        "WHISPER_BUILD_EXAMPLES": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "p-x64-win-debug-static",
+      "displayName": "Phoneme: Windows(64-bit) Static Lib Debug build",
+      "configurePreset": "p-x64-win-debug-static",
+      "configuration": "Debug"
+    },
+    {
+      "name": "p-x64-win-release-static",
+      "displayName": "Phoneme: Windows(64-bit) Static Lib Release build",
+      "configurePreset": "p-x64-win-release-static",
+      "configuration": "Release"
+    }
+  ]
+}
