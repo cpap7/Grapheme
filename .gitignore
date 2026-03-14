@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Phoneme-App/Phoneme-App.vcxproj
+/Phoneme-App/Phoneme-App.vcxproj.user
+/Phoneme-Core/bin
+/Phoneme-Core/bin-int
+/Phoneme-Core/Vendor/whisper.cpp/debug
+/Phoneme-Core/Vendor/whisper.cpp/release
+/Phoneme-Core/Phoneme-Core.vcxproj
+/Phoneme-Core/Phoneme-Core.vcxproj.filters
+/Phoneme-Core/Phoneme-Core.vcxproj.user
+/Scripts/__pycache__
+/Phoneme.sln
+/Grapheme-App/Grapheme-App.vcxproj
+/Grapheme-App/Grapheme-App.vcxproj.user
+/Grapheme-Core/Grapheme-Core.vcxproj
+/Grapheme-Core/Grapheme-Core.vcxproj.filters
+/Grapheme-Core/Grapheme-Core.vcxproj.user
+/Grapheme.sln
