@@ -1,12 +1,12 @@
 #pragma once
 
+#include "../Common.h"
+
 #ifdef __cplusplus
 	#include <memory>
 	#include <vector>
 	
-	#include "../Core/ResultCodes.h"
-	#include "../Core/PlatformDetection.h"
-
+	
 	#include "../Audio/AudioConfig.h"
 #else // C-specific includes
 

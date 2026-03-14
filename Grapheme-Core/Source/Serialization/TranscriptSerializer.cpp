@@ -1,6 +1,5 @@
 #include "gpch.h"
 #include "TranscriptSerializer.h"
-#include "../Core/ResultCodes.h"
 
 #include "../STT/STTResults.h"
 

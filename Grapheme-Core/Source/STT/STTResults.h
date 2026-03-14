@@ -1,10 +1,10 @@
 #pragma once
+#include "../Common.h"
 
 #include <string>
 #include <vector>
 #include <cstdint>
 
-#include "../Core/ResultCodes.h"
 namespace Grapheme {
 
 	struct SLanguageResult {

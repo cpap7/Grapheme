@@ -44,13 +44,12 @@
 #include <optional>
 #include <sstream>
 #include <stdexcept>
-#include <string>
 #include <thread>
 #include <vector>
+#include <regex>
+#include <algorithm>
 
-
-#include "Core/PlatformDetection.h"
-//#include "Core/ResultCodes.h"
+#include "Common.h"
 
 // DLL Macros
 #ifdef GRAPHEME_PLATFORM_WINDOWS

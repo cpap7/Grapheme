@@ -1,4 +1,5 @@
 #pragma once
+#include "../Common.h"
 
 namespace Grapheme {
 	struct GRAPHEME_API SSerializationConfig {

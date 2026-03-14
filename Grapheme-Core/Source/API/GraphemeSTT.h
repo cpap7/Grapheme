@@ -1,5 +1,5 @@
 #pragma once
-//#include "../Common.h"
+#include "../Common.h"
 
 #ifdef __cplusplus
     #include <string>
@@ -29,8 +29,8 @@ extern "C" {
         const char* m_initial_prompt;
         const char* m_language;            // nullptr for auto-detect
         int m_thread_count;                // 0 for auto
-        bool m_use_gpu;                    // Default = true
-        bool m_translate_to_english;       // Default = false
+        bool m_use_gpu;                    // Default = false
+        bool m_translate_to_english;       // Default = true
     } GRAPHEME_STT_Config_t;
 
     // Transcript result struct (for interop)
