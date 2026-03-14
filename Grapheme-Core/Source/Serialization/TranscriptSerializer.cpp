@@ -1,5 +1,9 @@
-#include "ppch.h"
+#include "gpch.h"
 #include "TranscriptSerializer.h"
+#include "../Core/ResultCodes.h"
+
+#include "../STT/STTResults.h"
+
 #include <json.hpp>
 
 namespace Grapheme {

@@ -27,7 +27,7 @@ project "Grapheme-App"
     }
 
     postbuildcommands {
-        '{COPYFILE} "../Grapheme-Core/bin/%{cfg.buildcfg}-%{cfg.architecture}/Phoneme-Core.dll" "%{cfg.targetdir}"',
+        '{COPYFILE} "../Grapheme-Core/bin/%{cfg.buildcfg}-%{cfg.architecture}/Grapheme-Core.dll" "%{cfg.targetdir}"',
     }
 
     filter "system:windows"

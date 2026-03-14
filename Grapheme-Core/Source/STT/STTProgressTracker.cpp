@@ -1,4 +1,4 @@
-#include "ppch.h"
+#include "gpch.h"
 #include "STTProgressTracker.h"
 
 namespace Grapheme {

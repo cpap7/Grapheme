@@ -21,7 +21,7 @@ int main() {
     audio_config.m_channels = 1;
     audio_config.m_buffer_size_ms = 5000; // 5 seconds of buffer
 
-    auto audio_device = Phoneme::CAudioDevice::Create(audio_config);
+    auto audio_device = Grapheme::CAudioDevice::Create(audio_config);
 
     // Check if the hardware is actually available
     Grapheme::EResultCode start_result = audio_device->StartCapture();

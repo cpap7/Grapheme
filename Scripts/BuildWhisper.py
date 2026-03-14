@@ -3,7 +3,7 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parent
-WHISPER_DIR = ROOT_DIR / "Phoneme-Core" / "Vendor" / "whisper.cpp"
+WHISPER_DIR = ROOT_DIR / "Grapheme-Core" / "Vendor" / "whisper.cpp"
 
 def clean():
     """Remove cached build directories."""

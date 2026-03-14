@@ -8,9 +8,9 @@
 	#define WIN32_LEAN_AND_MEAN
 	#define NOMINMAX
 #elif defined(__APPLE__)
-	#define VB_PLATFORM_MACOS
+	#define GRAPHEME_PLATFORM_MACOS
 #elif defined(__linux__)
-	#define VB_PLATFORM_LINUX
+	#define GRAPHEME_PLATFORM_LINUX
 #endif
 
 // Platform-Specific Headers
@@ -48,8 +48,9 @@
 #include <thread>
 #include <vector>
 
+
 #include "Core/PlatformDetection.h"
-#include "Core/ResultCodes.h"
+//#include "Core/ResultCodes.h"
 
 // DLL Macros
 #ifdef GRAPHEME_PLATFORM_WINDOWS

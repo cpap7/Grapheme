@@ -2,7 +2,7 @@ import argparse
 import BuildWhisper
 
 def main():
-    parser = argparse.ArgumentParser(description="Phoneme Setup")
+    parser = argparse.ArgumentParser(description="Grapheme Setup")
     parser.add_argument("--config", choices=["Debug", "Release", "All"], default="All")
     parser.add_argument("--skip-whisper", action="store_true")
     parser.add_argument("--clean", action="store_true", help="Clean all cached builds before building")

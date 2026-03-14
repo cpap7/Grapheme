@@ -10,7 +10,7 @@
       "name": "p-x64-win-debug-static",
       "displayName": "Phoneme: x64 Debug Static (native)",
       "description": "Phoneme: Windows(64-bit) Static Lib Debug build",
-      "generator": "Visual Studio 18 2026",
+      "generator": "Visual Studio 17 2022",
       "binaryDir": "${sourceDir}/debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
@@ -27,7 +27,7 @@
       "name": "p-x64-win-release-static",
       "displayName": "Phoneme: x64 Release Static (native)",
       "description": "Phoneme: Windows(64-bit) Static Lib Release build",
-      "generator": "Visual Studio 18 2026",
+      "generator": "Visual Studio 17 2022",
       "binaryDir": "${sourceDir}/release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",

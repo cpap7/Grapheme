@@ -39,8 +39,8 @@ project "Grapheme-Core"
         "ggml",
         "ggml-base",
         "ggml-cpu",
-        "ggml-vulkan",
-        "%{Library.Vulkan}"
+        --"ggml-vulkan",
+        --"%{Library.Vulkan}"
     }
 
     filter "system:windows"

@@ -1,14 +1,18 @@
 #pragma once
 #include "SerializationConfig.h"
-#include "../STT/STTResults.h"
 #include "../STT/STTConfig.h"
-#include "../Core/ResultCodes.h"
 
-#include <string>
+//
+//#include <string>
 #include <vector>
 
 namespace Grapheme {
 	// TODO: Add YAML support
+
+	// Fwd declarations
+	struct SLanguageResult;
+	struct STranscriptResult;
+
 
 	class CTranscriptSerializer {
 	private:

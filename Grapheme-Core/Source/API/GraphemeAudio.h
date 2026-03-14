@@ -29,7 +29,7 @@ extern "C" {
 
 // C++ API
 #ifdef __cplusplus
-namespace Phoneme {
+namespace Grapheme {
 	// Forward declarations
 	class CAudioDeviceImpl;
 
