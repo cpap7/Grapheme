@@ -30,7 +30,7 @@ project "Grapheme-Core"
         "Vendor/whisper.cpp/%{cfg.buildcfg:lower()}/ggml/src/%{cfg.buildcfg}",                 -- ggml.lib
         "Vendor/whisper.cpp/%{cfg.buildcfg:lower()}/ggml/src/ggml-base/%{cfg.buildcfg}",       -- ggml-base.lib
         "Vendor/whisper.cpp/%{cfg.buildcfg:lower()}/ggml/src/ggml-cpu/%{cfg.buildcfg}",        -- ggml-cpu.lib
-        --"Vendor/whisper.cpp/%{cfg.buildcfg:lower()}/ggml/src/ggml-vulkan/%{cfg.buildcfg}",     -- ggml-vulkan.lib
+        "Vendor/whisper.cpp/%{cfg.buildcfg:lower()}/ggml/src/ggml-vulkan/%{cfg.buildcfg}",     -- ggml-vulkan.lib
 
     }
 
@@ -39,8 +39,8 @@ project "Grapheme-Core"
         "ggml",
         "ggml-base",
         "ggml-cpu",
-        --"ggml-vulkan",
-        --"%{Library.Vulkan}"
+        "ggml-vulkan",
+        "%{Library.Vulkan}"
     }
 
     filter "system:windows"
