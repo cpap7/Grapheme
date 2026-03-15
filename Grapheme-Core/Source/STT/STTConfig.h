@@ -21,7 +21,7 @@ namespace Grapheme {
 		void* m_model_data				= nullptr;
 
 		// Flags
-		bool m_translate_to_english		= false;
+		bool m_translate_to_english		= true;
 	};
 
 	// DTW (Dynamic Time Warping) for token timestamps
@@ -45,7 +45,7 @@ namespace Grapheme {
 
 	struct SSTTHardwareConfig {
 		int m_thread_count				= std::min(4, (int32_t)std::thread::hardware_concurrency());
-		bool m_use_gpu					= false;	
+		bool m_use_gpu					= true;	
 		//bool m_flash_attention		= false;
 	};
 
