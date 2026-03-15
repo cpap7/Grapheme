@@ -45,7 +45,7 @@ project "Grapheme-Core"
 
     filter "system:windows"
         systemversion "latest"
-    --    toolset "v145" -- VS 2026
+        toolset "v145" -- VS 2026
         buildoptions { "/utf-8", "/Wall" }
         defines { 
             "_WINDOWS",
@@ -59,7 +59,7 @@ project "Grapheme-Core"
         symbols "On"
         defines { "_DEBUG" }
         links {
-            "msvcprtd" -- To prevent LNK2019 errors from the regex & algorithm headers that whisper uses
+            "msvcprtd",
         }
 
     filter "configurations:Release"
@@ -67,5 +67,5 @@ project "Grapheme-Core"
         optimize "On"
         defines { "NDEBUG" }
         links {
-            "msvcprt" -- To prevent LNK2019 errors from the regex & algorithm headers that whisper uses
+            "msvcprt",
         }

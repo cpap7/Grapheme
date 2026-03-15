@@ -8,9 +8,9 @@
   "configurePresets": [
     {
       "name": "p-x64-win-debug-static",
-      "displayName": "Phoneme: x64 Debug Static (native)",
-      "description": "Phoneme: Windows(64-bit) Static Lib Debug build",
-      "generator": "Visual Studio 17 2022",
+      "displayName": "Grapheme: x64 Debug Static (native)",
+      "description": "Grapheme: Windows(64-bit) Static Lib Debug build",
+      "generator": "Visual Studio 18 2026",
       "binaryDir": "${sourceDir}/debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
@@ -25,9 +25,9 @@
     },
     {
       "name": "p-x64-win-release-static",
-      "displayName": "Phoneme: x64 Release Static (native)",
-      "description": "Phoneme: Windows(64-bit) Static Lib Release build",
-      "generator": "Visual Studio 17 2022",
+      "displayName": "Grapheme: x64 Release Static (native)",
+      "description": "Grapheme: Windows(64-bit) Static Lib Release build",
+      "generator": "Visual Studio 18 2026",
       "binaryDir": "${sourceDir}/release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
@@ -44,13 +44,13 @@
   "buildPresets": [
     {
       "name": "p-x64-win-debug-static",
-      "displayName": "Phoneme: Windows(64-bit) Static Lib Debug build",
+      "displayName": "Grapheme: Windows(64-bit) Static Lib Debug build",
       "configurePreset": "p-x64-win-debug-static",
       "configuration": "Debug"
     },
     {
       "name": "p-x64-win-release-static",
-      "displayName": "Phoneme: Windows(64-bit) Static Lib Release build",
+      "displayName": "Grapheme: Windows(64-bit) Static Lib Release build",
       "configurePreset": "p-x64-win-release-static",
       "configuration": "Release"
     }
