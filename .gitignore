@@ -24,3 +24,9 @@
 /Grapheme-Core/bin-int/Debug-x86_64
 /Grapheme-Core/bin/Debug-x86_64
 /Grapheme-App/bin-int/Debug-x86_64
+/Grapheme-App/bin
+/Grapheme-App/bin-int/Release-x86_64
+/Grapheme-App/Assets/Models
+*.json
+/Grapheme-Core/bin/Release-x86_64
+/Grapheme-Core/bin-int/Release-x86_64
