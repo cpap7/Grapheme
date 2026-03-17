@@ -14,9 +14,11 @@ namespace Grapheme {
 	std::string CTranscriptSerializer::Serialize(const STranscriptResult& a_result) const {
 		nlohmann::json json;
 		json["Text"]		= a_result.m_text;
+
+#ifdef _DEBUG
 		json["ResultCode"]	= ResultCodeToString(a_result.m_result_code);
 		json["Success"]		= a_result.Success();
-
+#endif
 		if (m_config.m_include_confidence && !a_result.m_word_probabilities.empty()) {
 			json["WordProbabilities"] = a_result.m_word_probabilities;
 		}
@@ -31,9 +33,11 @@ namespace Grapheme {
 		nlohmann::json json;
 		json["LanguageCode"]	= a_result.m_language_code;
 		json["Confidence"]		= a_result.m_confidence;
+
+#ifdef _DEBUG
 		json["ResultCode"]		= ResultCodeToString(a_result.m_result_code);
 		json["Success"]			= a_result.Success();
-
+#endif
 		return m_config.m_pretty_print ? json.dump(m_config.m_indent_width) : json.dump();
 	}
 	
