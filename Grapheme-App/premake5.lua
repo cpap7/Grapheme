@@ -32,7 +32,7 @@ project "Grapheme-App"
 
     filter "system:windows"
         systemversion "latest"
-        --toolset "v145" -- VS 2026
+        toolset "v145" -- VS 2026
         defines { "_WINDOWS" }
 
     filter "configurations:Debug"
