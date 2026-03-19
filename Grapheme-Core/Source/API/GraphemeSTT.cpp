@@ -26,7 +26,7 @@ static Grapheme::SSTTConfig ConvertSSTConfig(const GRAPHEME_STT_Config_t* a_conf
     return config;
 }
 
-GRAPHEME_API GRAPHEME_STT_EngineHandle_t GRAPHEME_STDCALL GRAPHEME_STT_Create(const GRAPHEME_STT_Config_t* a_config) {
+GRAPHEME_API GRAPHEME_STTEngine_Handle_t GRAPHEME_STDCALL GRAPHEME_STT_Create(const GRAPHEME_STT_Config_t* a_config) {
     if (!a_config) {
         printf("[Grapheme] STT Error: Invalid config\n");
         return nullptr;
@@ -40,7 +40,7 @@ GRAPHEME_API GRAPHEME_STT_EngineHandle_t GRAPHEME_STDCALL GRAPHEME_STT_Create(co
     try {
         Grapheme::SSTTConfig config = ConvertSSTConfig(a_config);
         auto* stt_engine = new Grapheme::CSTTEngineImpl(config);
-        return reinterpret_cast<GRAPHEME_STT_EngineHandle_t>(stt_engine);
+        return reinterpret_cast<GRAPHEME_STTEngine_Handle_t>(stt_engine);
     }
     catch (...) {
         return nullptr;
@@ -49,23 +49,23 @@ GRAPHEME_API GRAPHEME_STT_EngineHandle_t GRAPHEME_STDCALL GRAPHEME_STT_Create(co
 
 }
 
-GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Destroy(GRAPHEME_STT_EngineHandle_t a_engine) {
+GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Destroy(GRAPHEME_STTEngine_Handle_t a_engine) {
     if (a_engine) {
         auto* stt_engine = reinterpret_cast<Grapheme::CSTTEngineImpl*>(a_engine);
         delete stt_engine;
     }
 }
 
-GRAPHEME_API int GRAPHEME_STDCALL GRAPHEME_STT_IsLoaded(GRAPHEME_STT_EngineHandle_t a_engine) {
+GRAPHEME_API int GRAPHEME_STDCALL GRAPHEME_STT_IsLoaded(GRAPHEME_STTEngine_Handle_t a_engine) {
     if (!a_engine) {
-        return 0;
+        return -1;
     }
 
     auto* stt_engine = reinterpret_cast<Grapheme::CSTTEngineImpl*>(a_engine);
     return stt_engine->IsLoaded() ? 1 : 0; // Checks context initialization first 
 }
 
-GRAPHEME_API GRAPHEME_STT_Result_t GRAPHEME_STDCALL GRAPHEME_STT_Transcribe(GRAPHEME_STT_EngineHandle_t a_engine, const float* a_audio, int a_sample_count) {
+GRAPHEME_API GRAPHEME_STT_Result_t GRAPHEME_STDCALL GRAPHEME_STT_Transcribe(GRAPHEME_STTEngine_Handle_t a_engine, const float* a_audio, int a_sample_count) {
     GRAPHEME_STT_Result_t c_transcript_result = {
         nullptr,    // m_text
         nullptr,    // m_word_probabilities
@@ -110,7 +110,7 @@ GRAPHEME_API GRAPHEME_STT_Result_t GRAPHEME_STDCALL GRAPHEME_STT_Transcribe(GRAP
     return c_transcript_result;
 }
 
-GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_TranscribeSimple(GRAPHEME_STT_EngineHandle_t a_engine, const float* a_audio, int a_sample_count) {
+GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_TranscribeSimple(GRAPHEME_STTEngine_Handle_t a_engine, const float* a_audio, int a_sample_count) {
     if (!a_engine || !a_audio || a_sample_count <= 0) {
         return nullptr;
     }
@@ -136,7 +136,7 @@ GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_TranscribeSimple(GRAPHEME
 
 }
 
-GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_DetectLanguage(GRAPHEME_STT_EngineHandle_t a_engine, const float* a_audio, int a_sample_count) {
+GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_DetectLanguage(GRAPHEME_STTEngine_Handle_t a_engine, const float* a_audio, int a_sample_count) {
     if (!a_engine || !a_audio || a_sample_count <= 0) {
         return nullptr;
     }
@@ -162,7 +162,7 @@ GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_DetectLanguage(GRAPHEME_S
     return language_string;
 }
 
-GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_SetProgressCallback(GRAPHEME_STT_EngineHandle_t a_engine, void (*a_callback)(int a_progress)) {
+GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_SetProgressCallback(GRAPHEME_STTEngine_Handle_t a_engine, void (*a_callback)(int a_progress)) {
     if (!a_engine) {
         return;
     }
@@ -171,7 +171,7 @@ GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_SetProgressCallback(GRAPHEME_STT
     stt_engine->SetProgressCallback(a_callback);
 }
 
-GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Cancel(GRAPHEME_STT_EngineHandle_t a_engine) {
+GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Cancel(GRAPHEME_STTEngine_Handle_t a_engine) {
     if (!a_engine) {
         return;
     }

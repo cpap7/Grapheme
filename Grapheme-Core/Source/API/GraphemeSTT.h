@@ -6,12 +6,17 @@
     #include <vector>
     #include <memory>
     #include <functional>
+   // #include <cstdbool>
+
    // #include "../Core/ResultCodes.h"
    // #include "../Core/PlatformDetection.h"    
 
     #include "../STT/STTConfig.h"
     #include "../STT/STTResults.h"
     #include "../STT/STTProgressTracker.h"
+#else
+    #include <stdbool.h>
+
 #endif
 
 #define GRAPHEME_STT_VERSION "1.0.0"
@@ -21,7 +26,7 @@
 extern "C" {
 #endif
     // Opaque handle for C
-    typedef struct GRAPHEME_STT_Engine_t* GRAPHEME_STT_EngineHandle_t;
+    typedef struct GRAPHEME_STTEngine_t* GRAPHEME_STTEngine_Handle_t;
 
     // C-specific config struct (for interop)
     typedef struct {
@@ -41,19 +46,21 @@ extern "C" {
         bool m_success;
     } GRAPHEME_STT_Result_t;
 
+  
+
     // Lifecycle
-    GRAPHEME_API GRAPHEME_STT_EngineHandle_t GRAPHEME_STDCALL GRAPHEME_STT_Create(const GRAPHEME_STT_Config_t* a_config);
-    GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Destroy(GRAPHEME_STT_EngineHandle_t a_engine);
-    GRAPHEME_API int GRAPHEME_STDCALL GRAPHEME_STT_IsLoaded(GRAPHEME_STT_EngineHandle_t a_engine);
+    GRAPHEME_API GRAPHEME_STTEngine_Handle_t GRAPHEME_STDCALL GRAPHEME_STT_Create(const GRAPHEME_STT_Config_t* a_config);
+    GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Destroy(GRAPHEME_STTEngine_Handle_t a_engine);
+    GRAPHEME_API int GRAPHEME_STDCALL GRAPHEME_STT_IsLoaded(GRAPHEME_STTEngine_Handle_t a_engine);
 
     // Transcription
-    GRAPHEME_API GRAPHEME_STT_Result_t GRAPHEME_STDCALL GRAPHEME_STT_Transcribe(GRAPHEME_STT_EngineHandle_t a_engine, const float* a_audio, int a_sample_count);
-    GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_TranscribeSimple(GRAPHEME_STT_EngineHandle_t a_engine, const float* a_audio, int a_sample_count);
-    GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_DetectLanguage(GRAPHEME_STT_EngineHandle_t a_engine, const float* a_audio, int a_sample_count);
+    GRAPHEME_API GRAPHEME_STT_Result_t GRAPHEME_STDCALL GRAPHEME_STT_Transcribe(GRAPHEME_STTEngine_Handle_t a_engine, const float* a_audio, int a_sample_count);
+    GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_TranscribeSimple(GRAPHEME_STTEngine_Handle_t a_engine, const float* a_audio, int a_sample_count);
+    GRAPHEME_API const char* GRAPHEME_STDCALL GRAPHEME_STT_DetectLanguage(GRAPHEME_STTEngine_Handle_t a_engine, const float* a_audio, int a_sample_count);
 
     // Control
-    GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_SetProgressCallback(GRAPHEME_STT_EngineHandle_t a_engine, void (*a_callback)(int a_progress));
-    GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Cancel(GRAPHEME_STT_EngineHandle_t a_engine);
+    GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_SetProgressCallback(GRAPHEME_STTEngine_Handle_t a_engine, void (*a_callback)(int a_progress));
+    GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_Cancel(GRAPHEME_STTEngine_Handle_t a_engine);
 
     // Memory management
     GRAPHEME_API void GRAPHEME_STDCALL GRAPHEME_STT_FreeString(const char* a_string);
