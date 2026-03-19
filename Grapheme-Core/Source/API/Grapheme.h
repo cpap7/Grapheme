@@ -1,8 +1,7 @@
 #pragma once
-// Client-facing header
-#include "GraphemeAudio.h"
-//#include "GraphemeSerializer.h"
-#include "GraphemeSTT.h"
 
-#include "../Serialization/SerializationConfig.h"
-#include "../Serialization/TranscriptSerializer.h"
+// API header
+// This header file should be included by client apps ONLY
+#include "GraphemeAudio.h"
+#include "GraphemeSTT.h"
+#include "GraphemeTranscriptSerializer.h"
