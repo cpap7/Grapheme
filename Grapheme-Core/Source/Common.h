@@ -64,13 +64,25 @@
     #define GRAPHEME_STDCALL
 #endif // GRAPHEME_PLATFORM_WINDOWS
 
+typedef enum { // C-specific result codes
+    GRAPHEME_RESULT_UNKNOWN = 0,
+    GRAPHEME_RESULT_SUCCESS = 1,
+    GRAPHEME_RESULT_NOT_INITIALIZED = 2,
+    GRAPHEME_RESULT_INVALID_PARAMETER = 3,
+    GRAPHEME_RESULT_MODEL_LOAD_FAILED = 4,
+    GRAPHEME_RESULT_PROCESSING_FAILED = 5,
+    GRAPHEME_RESULT_CANCELLED = 6,
+    GRAPHEME_RESULT_OUT_OF_MEMORY = 7,
+    GRAPHEME_RESULT_INTERNAL_ERROR = 8
+
+} GRAPHEME_ResultCode_t;
 
 #ifdef __cplusplus
 #include <cstdint>
 #include <string>
 
 namespace Grapheme {
-    // Common result codes
+    // Common result codes (C++)
     enum class EResultCode : uint8_t {
         Unknown = 0,
 
@@ -101,14 +113,14 @@ namespace Grapheme {
     }
 
     inline EResultCode StringToResultCode(const std::string& a_string) {
-        if (a_string == "SUCCESS") { return EResultCode::Success; }
-        if (a_string == "NOT INITIALIZED") { return EResultCode::NotInitialized; }
+        if (a_string == "SUCCESS")              { return EResultCode::Success; }
+        if (a_string == "NOT INITIALIZED")      { return EResultCode::NotInitialized; }
         if (a_string == "INVALID PARAMETER(S)") { return EResultCode::InvalidParameter; }
-        if (a_string == "MODEL LOAD FAILED") { return EResultCode::ModelLoadFailed; }
-        if (a_string == "PROCESSING FAILED") { return EResultCode::ProcessingFailed; }
-        if (a_string == "CANCELLED") { return EResultCode::Cancelled; }
-        if (a_string == "OUT OF MEMORY") { return EResultCode::OutOfMemory; }
-        if (a_string == "INTERNAL ERROR") { return EResultCode::InternalError; }
+        if (a_string == "MODEL LOAD FAILED")    { return EResultCode::ModelLoadFailed; }
+        if (a_string == "PROCESSING FAILED")    { return EResultCode::ProcessingFailed; }
+        if (a_string == "CANCELLED")            { return EResultCode::Cancelled; }
+        if (a_string == "OUT OF MEMORY")        { return EResultCode::OutOfMemory; }
+        if (a_string == "INTERNAL ERROR")       { return EResultCode::InternalError; }
 
         return EResultCode::Unknown;
     }
