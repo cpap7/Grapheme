@@ -40,7 +40,7 @@ namespace Grapheme {
 
 		if (ctx_result != MA_SUCCESS) {
 			m_context.reset();
-			printf("[Phoneme Audio Device] Error: Could not set up context.\n");
+			printf("[Grapheme Audio Device] Error: Could not set up context.\n");
 			return;
 		}
 

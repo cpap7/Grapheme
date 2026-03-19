@@ -14,14 +14,14 @@ int main() {
 
     auto stt_engine = Grapheme::CSTTEngine::Create(stt_config);
     if (!stt_engine || !stt_engine->IsLoaded()) {
-        std::cerr << "Failed to load STT model\n";
+        std::cerr << "[GRAPHEME] Failed to load STT model\n";
         return 1;
     }
 
     Grapheme::SAudioCaptureConfig audio_config;
     audio_config.m_sample_rate = 16000;
     audio_config.m_channels = 1;
-    audio_config.m_buffer_size_ms = 5000; // 3 secs of buffer
+    audio_config.m_buffer_size_ms = 4000; // buffer seconds
     audio_config.m_device_type = Grapheme::EDeviceType::Loopback; // Receive audio from speaker
 
     auto audio_device = Grapheme::CAudioDevice::Create(audio_config);
@@ -37,7 +37,7 @@ int main() {
     // Check if the hardware is actually available
     Grapheme::EResultCode start_result = audio_device->StartCapture();
     if (start_result != Grapheme::EResultCode::Success) {
-        std::cerr << "Capture failed: " << Grapheme::ResultCodeToString(start_result) << "\n";
+        std::cerr << "[GRAPHEME] Capture failed: " << Grapheme::ResultCodeToString(start_result) << "\n";
         return 1;
     }
     
@@ -54,7 +54,7 @@ int main() {
     std::thread worker([&]() {
         while (running.load()) {
             // Wait for enough audio to accumulate
-            std::this_thread::sleep_for(std::chrono::seconds(5));
+            std::this_thread::sleep_for(std::chrono::seconds(4));
 
             // Drain the accumulated audio
             std::vector<float> chunk;
@@ -67,23 +67,21 @@ int main() {
                 continue;
             }
 
-            Grapheme::STranscriptResult result =
-                stt_engine->Transcribe(chunk.data(), static_cast<int>(chunk.size()));
+            Grapheme::STranscriptResult result = stt_engine->Transcribe(chunk.data(), static_cast<int>(chunk.size()));
 
             if (result.Success()) {
-                std::string json = serializer.Serialize(result);
-                std::cout << json << "\n";
+                //serializer.SaveToFile("chunk.json", result);
+                std::cout << "[GRAPHEME] Audio Transcription: " << result.m_text << "\n";
                 all_results.push_back(std::move(result));
             }
             else {
-                std::cerr << "Transcription failed: "
-                    << Grapheme::ResultCodeToString(result.m_result_code) << "\n";
+                std::cerr << "Transcription failed: " << Grapheme::ResultCodeToString(result.m_result_code) << "\n";
             }
         }
     });
 
     // Main thread: wait for user input to stop
-    std::cout << "Capturing speaker audio... Press Enter to stop.\n";
+    std::cout << "[GRAPHEME] Capturing speaker audio... Press Enter to stop.\n";
     std::cin.get();
     running.store(false);
     worker.join();
@@ -93,10 +91,10 @@ int main() {
     // SaveToFile also returns EResultCode; the path might be invalid, disk full, etc.
     Grapheme::EResultCode save_result = serializer.SaveToFile("transcript.json", all_results);
     if (save_result != Grapheme::EResultCode::Success) {
-        std::cerr << "Save failed: " << Grapheme::ResultCodeToString(save_result) << "\n";
+        std::cerr << "[GRAPHEME] Save failed: " << Grapheme::ResultCodeToString(save_result) << "\n";
         return 1;
     }
 
-    std::cout << "Saved " << all_results.size() << " segments to transcript.json\n";
+    std::cout << "[GRAPHEME] Saved " << all_results.size() << " segments to transcript.json\n";
     return 0;
 }
